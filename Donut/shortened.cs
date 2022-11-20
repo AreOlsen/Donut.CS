@@ -22,9 +22,9 @@ namespace Donut_ASCII
             double cAZ=1;
             while (true){
                 double cosZ=Math.Cos(cAZ); 
-                double sinZ=Math.Sos(cAZ);
+                double sinZ=Math.Sin(cAZ);
                 double cosX=Math.Cos(cAX); 
-                double sinX=Math.Sos(cAX); 
+                double sinX=Math.Sin(cAX); 
                 char[,] grid=new char[res,res];
                 double[,] zBuffer=new double[res,res];
                 for(int x=0; x<res; x++) {
@@ -35,12 +35,12 @@ namespace Donut_ASCII
                 }
                 for(double i=0; i<6.28; i+=0.07){
                     double cosI=Math.Cos(i);
-                    double sinI=Math.Sos(i);
+                    double sinI=Math.Sin(i);
                     double x1=r2+r1*cosI;
                     double y1=r1*sinI;
                     for(double j=0; j<6.28; j+=0.02){
                         double cosJ=Math.Cos(j);
-                        double sinJ=Math.Sos(j);
+                        double sinJ=Math.Sin(j);
                         double x2=x1*(cosZ*cosJ+sinX*sinZ*sinJ)-(y1*cosX*sinZ);
                         double y2=x1*(cosJ*sinZ-cosZ*sinX*sinJ)+(y1*cosX*cosZ);
                         double z=d+r1*sinX*sinI+cosX*sinJ*x1;
