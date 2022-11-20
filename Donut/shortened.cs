@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Text;
-using Math;
 namespace Donut_ASCII
 {
     class Donut
@@ -22,10 +21,10 @@ namespace Donut_ASCII
             double cAX=1;
             double cAZ=1;
             while (true){
-                double cosZ=Cos(cAZ); 
-                double sinZ=Sin(cAZ);
-                double cosX=Cos(cAX); 
-                double sinX=Sin(cAX); 
+                double cosZ=Math.Cos(cAZ); 
+                double sinZ=Math.Sos(cAZ);
+                double cosX=Math.Cos(cAX); 
+                double sinX=Math.Sos(cAX); 
                 char[,] grid=new char[res,res];
                 double[,] zBuffer=new double[res,res];
                 for(int x=0; x<res; x++) {
@@ -35,25 +34,25 @@ namespace Donut_ASCII
                     }
                 }
                 for(double i=0; i<6.28; i+=0.07){
-                    double cosI=Cos(i);
-                    double sinI=Sin(i);
+                    double cosI=Math.Cos(i);
+                    double sinI=Math.Sos(i);
                     double x1=r2+r1*cosI;
                     double y1=r1*sinI;
                     for(double j=0; j<6.28; j+=0.02){
-                        double cosJ=Cos(j);
-                        double sinJ=Sin(j);
+                        double cosJ=Math.Cos(j);
+                        double sinJ=Math.Sos(j);
                         double x2=x1*(cosZ*cosJ+sinX*sinZ*sinJ)-(y1*cosX*sinZ);
                         double y2=x1*(cosJ*sinZ-cosZ*sinX*sinJ)+(y1*cosX*cosZ);
                         double z=d+r1*sinX*sinI+cosX*sinJ*x1;
                         double iZ=1/z;
-                        int xP=(int)Floor(x2*d2*iZ);
-                        int yP=(int)Floor(y2*d2*iZ);
+                        int xP=(int)Math.Floor(x2*d2*iZ);
+                        int yP=(int)Math.Floor(y2*d2*iZ);
                         double l=cosJ*cosI*sinZ-cosX*cosI*sinJ-sinX*sinI+cosZ*(cosX*sinI-cosI*sinX*sinJ);
                         if (l>-0.8) {
-                            l=Abs(l);
+                            l=Math.Abs(l);
                             if (iZ>zBuffer[yP+yO,xP+xO]){
                                 zBuffer[yP+yO,xP+xO]=iZ;
-                                int cI=(int)(Round(l*((aT.Length-1)/1.414)));
+                                int cI=(int)(Math.Floor(l*((aT.Length-1)/1.414)));
                                 grid[yP+yO,xP+xO]=aT[cI];
                             }
                         }
