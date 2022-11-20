@@ -12,6 +12,7 @@ The following diagram shows the step by step process over the algoritm.
 ### Diagram over the process
 
 ```mermaid
+  graph TD;
     A(Create a 2d circle.) --> B(Extend 2d circle to 3d taurus.);
     B --> C(Rotate 3d taurus around Z and X axes.);
     C --> D(Display 3d taurus onto camera plane.);
