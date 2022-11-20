@@ -9,7 +9,7 @@ namespace Donut_ASCII
         {
             int res = 55; //Window rendering width and height in the console.
             int framerate = 100;
-            char[] asciiTable = new char[9] {'.',':','-','=','+','*','#','%','@'}; //Black to total white grayscale. " .:-=+*#%@"
+            char[] asciiTable = new char[9] {'.', ':', '-','=', '+', '*', '#', '%', '@'}; //Black to total white grayscale. " .:-=+*#%@"
             double radius1 = 100; //Radius of circle which has midpoint of (radius2, 0)
             double radius2 = 150; //Radius from point of origin (0,0)
             //We use to this to secure that we never go over the resoloution, we want to see the entire donut!
@@ -21,7 +21,7 @@ namespace Donut_ASCII
             int y_offset = res / 2;
             double currentAngleX = 1;
             double currentAngleZ = 1;
-            while(true){  //For each frame, the animation goes forever therefore while true.
+            while (true){  //For each frame, the animation goes forever therefore while true.
                 //The currentAngles cosine and sin values used for rotating.
                 double cosAngleZ = Math.Cos(currentAngleZ); 
                 double sinAngleZ = Math.Sin(currentAngleZ);
@@ -74,8 +74,16 @@ namespace Donut_ASCII
                     for(int x = 0; x < res; x++){
                         frameOutput.Append(grid[y, x]);
                     }
-                    if (y != 0) { frameOutput.Append('\n'); }
+                    frameOutput.Append('\n'); 
                 }
+                for (int i = 0; i < res; i++)
+                {
+                    frameOutput.Append("#");
+                }
+                frameOutput.Append("\n \n");
+                frameOutput.Append($"Framerate:{framerate}. Resoloution:{res}x{res}. RotatingSpeedX:{rotatingAngleX}. RotatingSpeedZ:{rotatingAngleZ}. \n");
+                frameOutput.Append($"Distance:{distance}. Radius:{radius1}. CurrentAngleX:{currentAngleX.ToString("0.00")}. CurrentAngleZ:{currentAngleZ.ToString("0.00")}.");
+
                 Console.SetCursorPosition(0, 0);
                 Console.Write(frameOutput); //Print the new frame.
                 Thread.Sleep(1000/framerate); //Sleep so to show the frame before rendering next, we need some time to see!
